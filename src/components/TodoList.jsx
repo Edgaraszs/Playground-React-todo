@@ -10,7 +10,9 @@ function TodoList() {
 
   useEffect(() => {
     const localTodos = JSON.parse(localStorage.getItem('todos'));
-    setTodos(localTodos);
+    if (localTodos) {
+      setTodos(localTodos);
+    }
   }, []);
 
   function setCompleted(index) {
@@ -58,6 +60,7 @@ function TodoList() {
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 p-1.5 mb-2"
                 placeholder="Add todo"
+                aria-label="todo-input"
                 value={todo}
                 onChange={handleAddInputChange.bind(this)}
             />
